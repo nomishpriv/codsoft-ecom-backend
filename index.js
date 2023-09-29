@@ -27,16 +27,17 @@ const connectDB = async () => {
 // });
 
 // Add Access Control Allow Origin headers
-// app.use((req, res, next) => {
-//     res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
-//     next();
-//   });
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "https://nomishpriv.github.io");
+    next();
+  });
 app.use(
   cors({
     // allowedHeaders: ['Origin'],
     origin: ["https://nomishpriv.github.io"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
+
   })
 );
 // parse requests of content-type - application/json
