@@ -31,13 +31,14 @@ const connectDB = async () => {
 //     res.setHeader("Access-Control-Allow-Origin", "http://localhost:5173");
 //     next();
 //   });
-// app.use(
-//   cors({
-//     origin: ["http://localhost:5173"],
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    // allowedHeaders: ['Origin'],
+    origin: ["https://nomishpriv.github.io"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 // parse requests of content-type - application/json
 app.use(express.json());
 
@@ -45,6 +46,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cookieParser());
+// app.options('*', cors()) // include before other routes
 
 app.use("/", router);
 
