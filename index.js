@@ -29,6 +29,7 @@ const connectDB = async () => {
 // Add Access Control Allow Origin headers
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "https://nomishpriv.github.io");
+    res.setHeader("Access-Control-Allow-Credentials", true);
     next();
   });
 app.use(
