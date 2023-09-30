@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const helmet = require('helmet');
 
 const connectDB = async () => {
   try {
@@ -25,6 +26,18 @@ const connectDB = async () => {
 // db.once("open", function () {
 //   console.log("Connected successfully");
 // });
+
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        "script-src": ["'self'", "https://nomishpriv.github.io/"],
+      },
+    },
+  })
+);
+
+
 
 // Add Access Control Allow Origin headers
 app.use((req, res, next) => {
