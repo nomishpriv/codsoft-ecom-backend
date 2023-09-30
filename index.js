@@ -31,7 +31,7 @@ app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
-        "script-src": ["https://nomishpriv.github.io/"],
+        'script-src': ["'self'", "'unsafe-inline'", 'cdn.jsdelivr.net'],
       },
     },
   })
