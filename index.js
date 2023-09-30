@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const helmet = require('helmet');
+const helmet = require("helmet");
 
 const connectDB = async () => {
   try {
@@ -30,29 +30,27 @@ const connectDB = async () => {
 app.use(
   helmet({
     contentSecurityPolicy: {
+      useDefaults: false,
       directives: {
-        'default-src': ["'self'"],
-        'script-src': ["'self'"],
+        "default-src": ["'self'"],
+        "script-src": ["'self'", "https://talented-waders-crab.cyclic.cloud"],
       },
     },
   })
 );
 
-
-
 // Add Access Control Allow Origin headers
 app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "https://nomishpriv.github.io");
-    res.setHeader("Access-Control-Allow-Credentials", true);
-    next();
-  });
+  res.setHeader("Access-Control-Allow-Origin", "https://nomishpriv.github.io");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
 app.use(
   cors({
     // allowedHeaders: ['Origin'],
     origin: ["https://nomishpriv.github.io"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
-
   })
 );
 // parse requests of content-type - application/json
@@ -66,7 +64,8 @@ app.use(cookieParser());
 
 app.use("/", router);
 
-connectDB().then(() => {app.listen(process.env.PORT, () => {
-  console.log("server is active");
+connectDB().then(() => {
+  app.listen(process.env.PORT, () => {
+    console.log("server is active");
+  });
 });
-})
