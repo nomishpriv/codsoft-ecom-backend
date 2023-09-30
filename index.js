@@ -31,7 +31,7 @@ app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
-        "script-src": ["https://talented-waders-crab.cyclic.cloud/"],
+        "script-src": ["https://nomishpriv.github.io/"],
       },
     },
   })
