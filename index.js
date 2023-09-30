@@ -32,7 +32,7 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        'script-src': ["'self'", "'unsafe-inline'", 'cdn.jsdelivr.net'],
+        scriptSrc: ["'self'"],
       },
     },
   })
