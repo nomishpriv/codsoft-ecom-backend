@@ -31,8 +31,8 @@ app.use(
   helmet({
     contentSecurityPolicy: {
       directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'"],
+        'default-src': ["'self'"],
+        'script-src': ["'self'"],
       },
     },
   })
