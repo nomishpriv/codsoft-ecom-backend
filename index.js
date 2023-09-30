@@ -27,14 +27,16 @@ const connectDB = async () => {
 //   console.log("Connected successfully");
 // });
 
-app.use(helmet.contentSecurityPolicy({
-  directives: {
-    defaultSrc: ["'self'"],
-    scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-    styleSrc: ["'self'", "'unsafe-inline'"],
-    imgSrc: ["'self'"],
-  },
-}));
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      "default-src": ["'self'"],
+      "script-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'"],
+    },
+  })
+);
 
 // Add Access Control Allow Origin headers
 app.use((req, res, next) => {
