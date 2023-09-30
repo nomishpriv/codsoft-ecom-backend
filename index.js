@@ -27,17 +27,14 @@ const connectDB = async () => {
 //   console.log("Connected successfully");
 // });
 
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      useDefaults: false,
-      directives: {
-        "default-src": ["'self'"],
-        "script-src": ["'self'", "https://talented-waders-crab.cyclic.cloud"],
-      },
-    },
-  })
-);
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+    styleSrc: ["'self'", "'unsafe-inline'"],
+    imgSrc: ["'self'"],
+  },
+}));
 
 // Add Access Control Allow Origin headers
 app.use((req, res, next) => {
