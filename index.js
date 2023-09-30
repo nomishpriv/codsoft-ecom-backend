@@ -26,15 +26,20 @@ const connectDB = async () => {
 // db.once("open", function () {
 //   console.log("Connected successfully");
 // });
+// app.use(
+//   helmet.contentSecurityPolicy({
+//     directives: {
+//       "default-src": ["'self'"],
+//       "script-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+//       styleSrc: ["'self'", "'unsafe-inline'"],
+//       imgSrc: ["'self'"],
+//     },
+//   })
+// );
 
 app.use(
-  helmet.contentSecurityPolicy({
-    directives: {
-      "default-src": ["'self'"],
-      "script-src": ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      imgSrc: ["'self'"],
-    },
+  helmet({
+    contentSecurityPolicy: false,
   })
 );
 
